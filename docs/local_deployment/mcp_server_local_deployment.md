@@ -16,6 +16,7 @@ This guide explains how to clone and run the defect_solver_mcp_server project lo
    git clone https://github.com/lokumai/defect_solver_mcp_server.git
    cd defect-solver-mcp-server
    ```
+Note: If you experience any issues accessing the repository, please contact the Lokum AI team for assistance.
 ## 2. Install dependencies using uv:
    ```sh
    uv sync

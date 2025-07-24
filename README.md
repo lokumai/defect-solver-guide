@@ -50,7 +50,7 @@ The defect solver system follows a two-phase pipeline to narrow down the search 
 
 ```mermaid
 graph TD
-    subgraph "Phase 1: Select Search Space"
+    subgraph "Phase 1: Search Space"
         A[Bug Description] --> B{Search Space Router}
         C[Microservice Knowledge] --> B
         B -- Identifies Top-N Suspicious Microservices --> D["Selected Search Space"]

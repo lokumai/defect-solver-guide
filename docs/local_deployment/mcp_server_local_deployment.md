@@ -53,3 +53,13 @@ Note: If you experience any issues accessing the repository, please contact the 
 ### Note: 
 Once running, your MCP server will be available at:
 http://127.0.0.1:8000/mcp/
+
+You can now use this server to interact with the defect solver API as described in the [Defect Solver Usage Guide](../how_to_use/usage_guide.md).
+
+## MCP Inspector
+The MCP Inspector is a tool to help you visualize and debug the interactions with the MCP server. It provides a user-friendly interface to see the requests and responses between your agent and the MCP server.
+To use the MCP Inspector, simply run the command below in your terminal:
+
+```sh
+npx @modelcontextprotocol/inspector
+```

@@ -6,12 +6,13 @@ An AI-powered system for rapid bug localization in complex microservice architec
 - [Defect Solver 🪲](#defect-solver-)
   - [📖 Table of Contents](#-table-of-contents)
   - [How to Use Defect Solver?](#how-to-use-defect-solver)
+      - [Example:](#example)
+      - [Note:](#note)
+      - [Usage Flow:](#usage-flow)
   - [🚀 Quick Start](#-quick-start)
   - [🏛️ High-level Architecture](#️-high-level-architecture)
   - [📄 References](#-references)
   
-
----
 
 > **⚠️ Disclaimer:** Some links in this guide point to private company repositories and are only accessible to authorized team members. External users may encounter restricted access or broken links. Please contact us for public resources or further information.
 
@@ -19,20 +20,31 @@ An AI-powered system for rapid bug localization in complex microservice architec
 
 We offer a simple API to interact with the Defect Solver system. You can write your bug description in your natural language and the system will return a ranked list of `microservices` or `files` that are likely to contain the bug.
 
-For example:
+#### Example:
 > **User:** Why is the user profile not loading?
 
 > **Defect Solver:** The bug is likely in the `user-service` microservice, specifically in the `UserProfileController.java` file.
 
+#### Note:
+For now, the API is **ONLY** exposed via our MCP Server. This allows direct and easy integration with any AI development environment that supports [Model-Context Protocol](https://modelcontextprotocol.io/introduction). This includes popular IDEs like **VSCode**, **IntelliJ**, **Claude Desktop** or any MCP-compatible **Agent/LLM**. For using our API through the MCP Server, you can either run the server locally OR use our hosted version.
 
-For now, the API is **ONLY** exposed via our MCP Server. This allows direct and easy integration with any AI development environment that supports [Model-Context Protocol](https://modelcontextprotocol.io/introduction). This includes popular IDEs like **VSCode**, **IntelliJ**, **Claude Desktop** or any MCP-compatible **Agent/LLM**.
+#### Usage Flow:
 
-For using our API through the MCP Server, you can either:
-- Run the server locally 
-  
-or 
+Flowchart below is a high-level overview of how to use the Defect Solver API through the MCP Server:
+```mermaid
+flowchart LR
+    subgraph IDE["IDE (VSCode, JetBrains, etc.)"]
+        User["User"]
+        Agent["Agent (e.g., Copilot)"]
+    end
+    MCPServer["MCP Server"]
+    API["Defect Solver API"]
 
-- Use our hosted version.
+    User -->|Enters Prompt| Agent
+    Agent -->|Uses Tool| MCPServer
+    MCPServer -->|Calls API| API
+    API -->|Results| Agent
+```
 
 ## 🚀 Quick Start
 1. First deploy the MCP Server. You can either run it locally or use our hosted version.

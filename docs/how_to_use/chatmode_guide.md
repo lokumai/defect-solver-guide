@@ -9,3 +9,35 @@
 
 **Note:** When using ChatMode, you don’t need to manually call tools using /prompt commands.
 The tool is automatically triggered with the values entered into the ChatMode form.
+
+## 2. How to Use ChatMode for Defect Solver?
+
+### Step 1: Open ChatMode Configuration
+Click the dropdown next to the input type (e.g., Ask) in the Copilot Chat interface.
+Then click Configure Modes...!
+
+![chatmode_guide_1.png](chatmode_guide_1.png)
+### Step 2: Create a New ChatMode
+Click on “+ Create new custom chat mode file...”
+
+![chatmode_guide_2.png](chatmode_guide_2.png)
+### Step 3: Select Location for the ChatMode File
+Choose User Data Folder (recommended for local use).
+Alternatively, you can choose .github/chatmodes if you want to commit the mode into version control.
+
+![chatmode_guide_3.png](chatmode_guide_3.png)
+### Step 4: Name Your ChatMode
+Enter a name such as dnext-chatmode and press Enter.
+
+![chatmode_guide_4.png](chatmode_guide_4.png)
+ You can later find this file under resources/ folder in the defect-solver-guide repository.
+
+### Step 5: Edit the Generated ChatMode File
+A new .chatmode.md file will be created. 
+
+![chatmode_guide_5.png](chatmode_guide_5.png)
+### Step 6: Use the ChatMode in Copilot
+Once saved, your ChatMode will appear under the Custom section in the dropdown.
+Select it to activate structured interaction.
+
+![chatmode_guide_6.png](chatmode_guide_6.png)

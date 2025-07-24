@@ -34,6 +34,24 @@ or
 
 - Use our hosted version.
 
+---
+
+Below is a high-level overview of how to use the Defect Solver API through the MCP Server:
+```mermaid
+flowchart LR
+    subgraph IDE["IDE (VSCode, JetBrains, etc.)"]
+        User["User"]
+        Agent["Agent (e.g., Copilot)"]
+    end
+    MCPServer["MCP Server"]
+    API["Defect Solver API"]
+
+    User -->|Enters Prompt| Agent
+    Agent -->|Uses Tool| MCPServer
+    MCPServer -->|Calls API| API
+    API -->|Results| Agent
+```
+
 ## 🚀 Quick Start
 1. First deploy the MCP Server. You can either run it locally or use our hosted version.
    - For local deployment, follow the [MCP Server Local Deployment Guide](./docs/deployment/mcp_server_local_deployment.md).

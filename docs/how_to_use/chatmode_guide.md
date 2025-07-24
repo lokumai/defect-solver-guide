@@ -33,7 +33,8 @@ Enter a name such as dnext-chatmode and press Enter.
  You can later find this file under resources/ folder in the defect-solver-guide repository.
 
 ### Step 5: Edit the Generated ChatMode File
-A new .chatmode.md file will be created. 
+A new .chatmode.md file will be created. Customize it to describe your ChatMode and add tools:
+(Copy the content of denxt-chatmode.md from the defect-solver-guide repository into this file.)
 
 ![chatmode_guide_5.png](chatmode_guide_5.png)
 ### Step 6: Use the ChatMode in Copilot

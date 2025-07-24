@@ -58,11 +58,11 @@ graph TD
 
     subgraph "Phase 2: Bug Localization"
         D --> E{Bug Localizer}
-        E --> K[Ranked List of Files]
+        E -- Identifies Top-M Suspicious Files within Selected Search Space --> K[Ranked List of Files]
         K --> L((Final Result))
     end
 ```
-> For a complete breakdown of the algorithmic logic, see the **[System Architecture Document](./docs/algorithm_details/algorithm_details.md)**.
+> For a complete breakdown of the algorithmic logic, see the **[Algorithm Details Document](https://github.com/pia-team/defect_solver_api/blob/main/docs/algorithm_details/algorithm_details.md)**.
 
 ## 📄 References
 

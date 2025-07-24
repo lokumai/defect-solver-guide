@@ -57,12 +57,8 @@ graph TD
     end
 
     subgraph "Phase 2: Bug Localization"
-        D --> E{BugLocalizer}
-        E -- Strategy Selection --> G{Strategy Execution}
-        G --> H1[Filtering Strategy]
-        G --> H2[Direct Strategy]
-        H1 --> K[Ranked List of Files]
-        H2 --> K
+        D --> E{Bug Localizer}
+        E --> K[Ranked List of Files]
         K --> L((Final Result))
     end
 ```

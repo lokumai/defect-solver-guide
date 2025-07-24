@@ -57,9 +57,13 @@ http://127.0.0.1:8000/mcp/
 You can now use this server to interact with the defect solver API as described in the [Defect Solver Usage Guide](../how_to_use/usage_guide.md).
 
 ## MCP Inspector
-The MCP Inspector is a tool to help you visualize and debug the interactions with the MCP server. It provides a user-friendly interface to see the requests and responses between your agent and the MCP server.
+The MCP Inspector is a tool to help you visualize and debug the interactions with the MCP server.
 To use the MCP Inspector, simply run the command below in your terminal:
 
 ```sh
 npx @modelcontextprotocol/inspector
 ```
+
+The GUI will open in your default web browser, allowing you to monitor the communication with the MCP server in real-time:
+
+<img src="https://raw.githubusercontent.com/modelcontextprotocol/inspector/main/mcp-inspector.png" alt="MCP Inspector">

@@ -48,8 +48,8 @@ flowchart LR
 
 ## 🚀 Quick Start
 1. First deploy the MCP Server. You can either run it locally or use our hosted version.
-   - For local deployment, follow the [MCP Server Local Deployment Guide](./docs/deployment/mcp_server_local_deployment.md).
-   - For hosted version, you can use our public MCP Server at `https://mcp.defect-solver.com` (Requires API Key).
+   - For local deployment, follow the [MCP Server Local Deployment Guide](./docs/local_deployment/mcp_server_local_deployment.md).
+   - For hosted version, you can use our public MCP Server at `https://mcp.defect-solver.com` (Requires DEFECT SOLVER API Key).
 2. Install the MCP Server extension in your IDE (or any MCP-compatible environment):
    - For **VSCode**, follow the [VSCode Installation Guide](./docs/installation/vscode_installation_guide.md).
    - For **JetBrains**, follow the [JetBrains Installation Guide](./docs/installation/jetbrains_installation_guide.md).

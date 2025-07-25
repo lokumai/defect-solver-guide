@@ -49,8 +49,38 @@
 
 - Create or update the file to look like this:
 
-![jetbrains_guide_5.png](../../resources/images/jetbrains_guide_5.png)
+```json{
+	"servers": {
+		"defect-solver": {
+			"url": "http://0.0.0.0:8000/mcp/",
+           "type": "http",
 
+           "headers": {
+
+               "DS-API-Key": "${input:defect-solver-api-key}"
+
+           }
+	},
+	   "inputs": [
+
+           {
+
+               "type": "promptString",
+
+               "id": "defect-solver-api-key",
+
+               "description": "Enter your Defect Solver API Key",
+
+               "password": true
+
+           }
+
+   ]   
+
+}
+}
+```
+- Make sure to replace the URL with your MCP server endpoint and add your API key.
 - After saving mcp.json, tools under your MCP server (e.g., defect_solver) will appear in the tools panel in chat.
 
 ![jetbrains_guide_6.png](../../resources/images/jetbrains_guide_6.png)

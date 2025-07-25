@@ -1,0 +1,24 @@
+# VSCode settings
+.vscode/
+*.code-workspace
+
+# JetBrains IDEs (IntelliJ, PyCharm, etc.)
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# JetBrains IDEs: workspace-specific files
+# (uncomment if you want to ignore all JetBrains project files)
+# .idea/
+
+# Common JetBrains IDEs files
+*.shelf/
+*.swp
+.DS_Store
+
+# Python virtual environments (optional, but common)
+venv/
+.env/
+__pycache__/
+*.pyc

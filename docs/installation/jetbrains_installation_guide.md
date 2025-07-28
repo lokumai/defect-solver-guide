@@ -48,38 +48,69 @@
  ![jetbrains_guide_4.png](../../resources/images/jetbrains_guide_4.png)
 
 - Create or update the file to look like this:
-
-```json{
-	"servers": {
-		"defect-solver": {
-			"url": "http://0.0.0.0:8000/mcp/",
-           "type": "http",
-
-           "headers": {
-
-               "DS-API-Key": "${input:defect-solver-api-key}"
-
-           }
-	},
-	   "inputs": [
-
-           {
-
-               "type": "promptString",
-
-               "id": "defect-solver-api-key",
-
-               "description": "Enter your Defect Solver API Key",
-
-               "password": true
-
-           }
-
-   ]   
-
+  * If you are using **private MCP server** hosted on Hugging Face Space:
+  
+```json
+{
+    "servers": {        
+        "ds": {
+            "url": "https://dnext-ds-mcp-server.hf.space/mcp/",
+            "type": "http",
+            "headers": {
+                "DS-API-Key": "${input:defect-solver-api-key}",
+                "Authorization": "Bearer ${input:hf-access-token}"
+            }
+        }
+    },
+    "inputs": [
+        {
+            "type": "promptString",
+            "id": "defect-solver-api-key",
+            "description": "Enter your Defect Solver API Key",
+            "password": true
+        },
+        {
+            "type": "promptString",
+            "id": "hf-access-token",
+            "description": "Enter your Hugging Face Access Token",
+            "password": true  
+        }
+    ]
 }
-}
+
 ```
+You need to enter defect-solver-api-key and hf-access-token as inputs.
+
+  * If you are using a **public MCP server** hosted on Hugging Face Space:
+
+
+
+
+```json
+{
+    "servers": {
+        "ds": {
+            "url": "https://dnext-ds-mcp-server.hf.space/mcp/",
+            "type": "http",
+            "headers": {
+                "DS-API-Key": "${input:defect-solver-api-key}"
+            }
+        }
+    },
+    "inputs": [
+        {
+            "type": "promptString",
+            "id": "defect-solver-api-key",
+            "description": "Enter your Defect Solver API Key",
+            "password": true
+        }
+    ]
+}
+```   
+You only need to enter defect-solver-api-key as input.
+- If you are using local MCP server, you can replace the URL with your local server endpoint (e.g. http://0.0.0.0:8000/mcp)  and remove the headers section.
+
+
 - Make sure to replace the URL with your MCP server endpoint and add your API key.
 - After saving mcp.json, tools under your MCP server (e.g., defect_solver) will appear in the tools panel in chat.
 

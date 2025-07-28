@@ -117,7 +117,7 @@
 ```
 You need to enter defect-solver-api-key and hf-access-token as inputs.
 
-  * If you are using a **public MCP server** hosted on Hugging Face Space:
+  * If you are using a **public/local MCP server** hosted on Hugging Face Space:
 
 
 

@@ -93,7 +93,7 @@
             "url": "https://dnext-ds-mcp-server.hf.space/mcp/",
             "type": "http",
             "headers": {
-                "DS-API-Key": "${input:defect-solver-api-key}",
+                "DS-API-KEY": "${input:defect-solver-api-key}",
                 "Authorization": "Bearer ${input:hf-access-token}"
             }
         }
@@ -129,7 +129,7 @@ You need to enter defect-solver-api-key and hf-access-token as inputs.
             "url": "https://dnext-ds-mcp-server.hf.space/mcp/",
             "type": "http",
             "headers": {
-                "DS-API-Key": "${input:defect-solver-api-key}"
+                "DS-API-KEY": "${input:defect-solver-api-key}"
             }
         }
     },

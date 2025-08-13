@@ -29,7 +29,13 @@
 - In the tool selection window, scroll down and click **“Add More Tools…”**.
 
 ![vscode_guide_3.png](../../resources/images/vscode_guide_3.png)
+
+
+* Depending on your VS Code version, you may see a **“Add MCP Server”** button as followed below: (Skip the 5th step if you see this button)
+
+![jetbrains_guide_8.png](../../resources/images/jetbrains_guide_8.png)
 ---
+
 
 ## 5. Add MCP Server
 
@@ -90,43 +96,7 @@
 {
     "servers": {        
         "ds": {
-            "url": "https://dnext-ds-mcp-server.hf.space/mcp/",
-            "type": "http",
-            "headers": {
-                "DS-API-KEY": "${input:defect-solver-api-key}",
-                "Authorization": "Bearer ${input:hf-access-token}"
-            }
-        }
-    },
-    "inputs": [
-        {
-            "type": "promptString",
-            "id": "defect-solver-api-key",
-            "description": "Enter your Defect Solver API Key",
-            "password": true
-        },
-        {
-            "type": "promptString",
-            "id": "hf-access-token",
-            "description": "Enter your Hugging Face Access Token",
-            "password": true  
-        }
-    ]
-}
-
-```
-You need to enter defect-solver-api-key and hf-access-token as inputs.
-
-  * If you are using a **public/local MCP server** hosted on Hugging Face Space:
-
-
-
-
-```json
-{
-    "servers": {
-        "ds": {
-            "url": "https://dnext-ds-mcp-server.hf.space/mcp/",
+            "url": "https://dnext-coder-mcp-server.pia-team.com/mcp/",
             "type": "http",
             "headers": {
                 "DS-API-KEY": "${input:defect-solver-api-key}"
@@ -142,8 +112,10 @@ You need to enter defect-solver-api-key and hf-access-token as inputs.
         }
     ]
 }
-```   
-You only need to enter defect-solver-api-key as input.
+
+```
+You need to enter defect-solver-api-key as inputs.
+
 - If you are using local MCP server, you can replace the URL with your local server endpoint (e.g. http://0.0.0.0:8000/mcp)  and remove the headers section.
 
 

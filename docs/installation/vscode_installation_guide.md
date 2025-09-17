@@ -1,6 +1,9 @@
 # 🛠️ Integrating Defect Solver MCP Tools into VSCode Copilot Chat: Step-by-Step Guide
 
 ---
+## Installation Demo
+- [Click here to watch the installation video](https://piabilisimtr-my.sharepoint.com/:v:/g/personal/selcan_yukcu_pia-team_com/EcbL6HXePXNMoiL4Qyk6WaMBgpNUuNSh2bj3xsyraKqC5Q?e=8EEwbI&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D)
+---
 
 ## 1. Open VS Code
 

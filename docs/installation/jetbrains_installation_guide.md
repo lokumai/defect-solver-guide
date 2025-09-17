@@ -1,11 +1,15 @@
 # Integrating Defect Solver MCP Tools into GitHub Copilot Chat in IntelliJ IDE
 
 ---
+## Installation Demo
+
+- [Click here to watch the installation video]( https://piabilisimtr-my.sharepoint.com/:v:/g/personal/selcan_yukcu_pia-team_com/EaIo9rQXdp1Mk0rxrOcGdS4B2sGQOnVlWkB8dFKIoDbFGQ?e=OgDAMY&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D )
+---
+
 
 ## 1. Open IntelliJ IDE
 
 - Launch IntelliJ IDE and ensure your project is open.
-
 ---
 
 ## 2. Start GitHub Copilot Chat

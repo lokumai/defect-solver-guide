@@ -135,6 +135,8 @@ You need to enter defect-solver-api-key as inputs.
 - Make sure they are checked ✅ so you can use them in the chat.
 
 ![vscode_guide_11.png](../../resources/images/vscode_guide_11.png)
+
+>  **Note:** multi_module_bug_localization tool is now deprecated. 
 ---
 
 ## 14. Use Prompts via `/` Command

@@ -27,11 +27,11 @@ flowchart LR
 
 - Below is a summary of the available tools for **AGENT**, to be used for bug localization:
   
-| | Tool Name                      | Purpose                                                      | When to Use                                              |
-|---|------------------------------- |--------------------------------------------------------------|----------------------------------------------------------|
-| 1 | `multi_module_bug_localization` | Localize bug across all microservices                        | When responsible microservice is unknown                 |
-| 2 | `single_module_bug_localization`| Localize bug within a specific microservice                   | When affected module is known or strongly suspected      |
-| 3 | `search_space_routing`          | Identify likely microservices (search spaces) for a bug      | To narrow down investigation before deeper localization  |
+| | Tool Name                                          | Purpose                                                      | When to Use                                              |
+|---|----------------------------------------------------|--------------------------------------------------------------|----------------------------------------------------------|
+| 1 | `multi_module_bug_localization` <br/> **(DEPRECATED)** | Localize bug across all microservices                        | When responsible microservice is unknown                 |
+| 2 | `single_module_bug_localization`                   | Localize bug within a specific microservice                   | When affected module is known or strongly suspected      |
+| 3 | `search_space_routing`                             | Identify likely microservices (search spaces) for a bug      | To narrow down investigation before deeper localization  |
 
 
 - Below is a summary of the available prompts for **YOU**, to be used to guide the agent through the bug resolution process:
@@ -49,44 +49,8 @@ flowchart LR
 ## Tool Usage Guide
 - **NOTE:** The tools are designed to be used by an agent (like Copilot) that can send requests to the defect solver API. You, as a developer, will interact with the agent using our prompts, or you can explicitly ask the agent to use a specific tool.
 
-### 1. multi_module_bug_localization
-**Name:** multi_module_bug_localization
+### 1. multi_module_bug_localization **(DEPRECATED)**
 
-**Purpose:** Performs bug localization across the entire microservice architecture by first identifying likely microservices (search spaces) and then locating the bug-related files within them.
-
-**When to Use:**
-- When the responsible microservice for a bug is unknown.
-- For system-wide or cross-module issues.
-- As the default entry point for new or ambiguous bug reports.
-
-**Input:** `MultiModuleRequest` (issue key, summary, description)
-
-**Output:** Selected microservices and localized file paths likely related to the bug.
-
-> **NOTE:** For `multi_module_bug_localization`, the tool selects the module (microservice) name(s) automatically as part of its process.
-
-**Flowchart:**
-```plaintext
-[Start]
-   |
-   v
-[User Provides Bug Description]
-   |
-   v
-[search_space_routing]
-   |
-   v
-[List of Likely Microservices/Modules]
-   |
-   v
-[multi_module_bug_localization]
-   |
-   v
-[Return Files/Locations Likely Related to Bug]
-   |
-   v
-[End]
-```
 
 ### 2. single_module_bug_localization
 **Name:** single_module_bug_localization

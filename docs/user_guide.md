@@ -72,15 +72,16 @@ We provide structured prompts to guide AI agents through the bug resolution work
 
 | Prompt | Purpose | When to Use |
 |--------|---------|-------------|
-| `prompt_select_tool` | *[Coming Soon]* | Select appropriate bug localization strategy |
-| `prompt_augment_bug_report` | *[Coming Soon]* | Enrich bug description with technical details |
-| `prompt_revise_bug_report` | *[Coming Soon]* | Improve bug description clarity |
-| `prompt_find_bug` | *[Coming Soon]* | Execute localization and collect results |
-| `prompt_explain` | *[Coming Soon]* | Interpret and prioritize localization results |
-| `prompt_fix_bug` | *[Coming Soon]* | Apply actual code fixes to identified files |
-| `prompt_full_workflow` | *[Coming Soon]* | Run complete bug resolution end-to-end |
+| **Localize and Find Bug Using Selected Tool** | Execute localization tools and get starting points | When you have a bug description and need to find likely files/microservices |
+| **Investigate Root Cause** | Analyze localization results and determine root cause | After localization, to understand what's causing the bug and explore fix options |
+| **Implement Bug Fix** | Apply approved code changes | Only after investigation phase and user approval to implement the fix |
 
-> **Note:** Prompt implementation details will be updated in future releases.
+**Workflow**: Localization → Investigation (with approval) → Implementation (with approval)
+
+**Key Principles**:
+- Tools provide **starting points**, not definitive answers
+- Always use **original bug descriptions** (never augment before passing to tools)
+- Require **user approval** before each phase transition
 
 ---
 
@@ -162,51 +163,73 @@ The agent should confirm it can access the `search_space_routing` and `single_mo
 
 ```mermaid
 graph TD
-    A[Receive Bug Report] --> B{Know Which Module?}
-    B -->|No| C[Ask Agent: Use search_space_routing]
-    B -->|Yes| D[Ask Agent: Use single_module_bug_localization]
-    C --> E[Review Top Microservices]
+    A[Bug Report] --> B{Know Module?}
+    B -->|No| C[Phase 1: search_space_routing]
+    B -->|Yes| D[Phase 1: single_module_bug_localization]
+    C --> E[Results: Top Microservices]
     E --> D
-    D --> F[Review Top Files]
-    F --> G[Investigate & Fix]
+    D --> F[Results: Top Files]
+    F --> G{User Approves Investigation?}
+    G -->|Yes| H[Phase 2: Investigate Root Cause]
+    G -->|No| I[End]
+    H --> J[Analysis & Fix Options]
+    J --> K{User Approves Fix?}
+    K -->|Yes| L[Phase 3: Implement Changes]
+    K -->|No| I
+    L --> M[Verification]
 ```
 
 ### Example: Full Bug Resolution
 
 **Scenario:** "User cannot update their profile picture"
 
-**Step 1: Route to Microservice**
+**Phase 1: Localization**
 ```
-You: "I have a bug where users cannot update their profile picture. 
-     Use the search_space_routing tool to find which microservices might be responsible."
+You: Use the "Localize and Find Bug" prompt with my bug description.
 
-Agent: [Calls search_space_routing tool]
-       Results: 
+Agent: [Calls search_space_routing]
+       Results (starting points): 
        1. user-profile (score: 0.85)
        2. document (score: 0.72)
        3. account (score: 0.61)
-```
+       
+       Would you like me to investigate user-profile module?
 
-**Step 2: Localize Files**
-```
-You: "Now use single_module_bug_localization on the 'user-profile' module."
+You: Yes, proceed.
 
 Agent: [Calls single_module_bug_localization with module="user-profile"]
-       Results:
-       1. controller/ProfileController.java
-       2. service/ProfileImageService.java
+       Results (starting points):
+       1. service/ProfileImageService.java
+       2. controller/ProfileController.java
        3. validator/ImageValidator.java
-       4. repository/ProfileRepository.java
-       ...
+       
+       These are starting points. Shall I investigate?
 ```
 
-**Step 3: Investigate & Fix**
+**Phase 2: Investigation (User Approval Required)**
 ```
-You: "Show me the ProfileImageService.java file and check for issues."
+You: Yes, investigate the root cause.
 
-Agent: [Opens file and analyzes code]
-       Found issue: File size validation is too strict (1MB limit).
-       Suggesting fix...
+Agent: [Analyzes identified files]
+       Root Cause: ProfileImageService has file size validation limit of 1MB,
+       but frontend allows 5MB uploads.
+       
+       Fix Options:
+       1. Increase backend limit to 5MB
+       2. Decrease frontend limit to 1MB
+       3. Make limit configurable
+       
+       Shall I implement option 1 (increase to 5MB)?
+```
+
+**Phase 3: Implementation (User Approval Required)**
+```
+You: Yes, implement option 1.
+
+Agent: [Applies changes to ProfileImageService.java]
+       Changed: MAX_FILE_SIZE from 1MB to 5MB
+       Updated: Validation message
+       Suggested tests: Upload 2MB, 4MB, 6MB files
 ```
 
 ---
@@ -228,22 +251,27 @@ Summary: Payment broken
 Description: Doesn't work
 ```
 
-### 2. Use Progressive Narrowing
-1. Start with `search_space_routing` if uncertain
-2. Use results to select 1-2 most likely microservices
-3. Run `single_module_bug_localization` on each candidate
-4. Investigate top-ranked files first
+### 2. Follow the Three-Phase Workflow
+1. **Localization**: Get starting points from tools (don't modify your bug description)
+2. **Investigation**: Approve before agent investigates files
+3. **Implementation**: Approve before agent applies changes
 
-### 3. Combine Tools with Codebase Access
-- Let the agent access your full codebase for context
-- Use localization tools to prioritize investigation
-- Don't rely solely on tool output—verify findings
+### 3. Trust the Approval Gates
+- Tools provide **starting points**, not definitive answers
+- Always **review results** before proceeding to next phase
+- Agent will **ask permission** before investigating or changing code
+- You maintain **full control** throughout the workflow
 
-### 4. Iterate When Needed
+### 4. Use Original Bug Descriptions
+- **Never augment or modify** your bug description before tool calls
+- Let tools work with **your exact words**
+- Technical augmentation is for your review only, not tool input
+
+### 5. Iterate Intelligently
 If initial results don't lead to the bug:
-- Refine your bug description with more technical details
-- Try the next ranked microservice or file
-- Ask the agent to search for related code patterns
+- Review next ranked microservice or file
+- Provide additional context in conversation (not in original bug description)
+- Ask agent to investigate related patterns in identified areas
 
 ---
 
@@ -263,6 +291,18 @@ If initial results don't lead to the bug:
 - Confirm MCP server URL is correct
 - Check network connectivity to `dnext-coder-mcp-server.pia-team.com`
 - Verify IDE has MCP support enabled
+
+---
+
+## Using AGENTS.md for Better Results
+
+For optimal agent behavior, place the [AGENTS.md](../resources/AGENTS.md) file in your project root. This provides:
+- High-level workflow guidance for the AI agent
+- DNext microservices reference
+- TMForum compliance context
+- Approval gate enforcement
+
+See the [AGENTS.md file](../resources/AGENTS.md) for details.
 
 ---
 

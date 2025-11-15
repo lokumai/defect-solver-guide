@@ -104,10 +104,11 @@ Edit `mcp.json` (usually located in your user settings):
 ```json
 {
   "mcpServers": {
-    "dnext-coder": {
-      "url": "https://dnext-coder-mcp-server.pia-team.com/sse",
+    "dnext-coder-mcp": {
+      "url": "https://dnext-coder-mcp-server.pia-team.com/mcp/",
+      "type": "http",
       "headers": {
-        "DS-API-KEY": "your-api-key-here"
+        "DS-API-KEY": "${input:defect-solver-api-key}"
       }
     }
   }
@@ -123,10 +124,11 @@ Edit your MCP configuration file (location varies by IDE):
 ```json
 {
   "mcpServers": {
-    "dnext-coder": {
-      "url": "https://dnext-coder-mcp-server.pia-team.com/sse",
+    "dnext-coder-mcp": {
+      "url": "https://dnext-coder-mcp-server.pia-team.com/mcp/",
+      "type": "http",
       "headers": {
-        "DS-API-KEY": "your-api-key-here"
+        "DS-API-KEY": "${input:defect-solver-api-key}"
       }
     }
   }

@@ -2,7 +2,16 @@
 
 AI-powered bug localization for microservice architectures using hierarchical code understanding and LLM-based analysis.
 
+[Research Paper](https://link.springer.com/chapter/10.1007/978-3-031-97576-9_6)
+
 > **⚠️ Disclaimer:** Some links point to private repositories accessible only to authorized team members.
+
+**PROJECT INDEX:**
+1. [Defect Solver API](https://github.com/lokumai/defect_solver_api): locates buggy repos and files
+2. [Defect Solver Codebase Summarizer](https://github.com/lokumai/defect-solver-codebase-summarizer): converts codebases to NL knowledge base
+3. [Dnext Coder MCP](https://github.com/lokumai/dnext_coder_mcp_server): a gateway to acccess our API
+4. [Central Storage](https://huggingface.co/spaces/dnext/ds-storage): stores NL knowledge bases
+5. [Defect Solver Agent](https://github.com/lokumai/defect-solver-agent): a simple code agent to fix bugs
 
 ## What It Does
 

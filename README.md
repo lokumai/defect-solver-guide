@@ -2,8 +2,6 @@
 
 AI-powered bug localization for microservice architectures using hierarchical code understanding and LLM-based analysis.
 
-[Research Paper](https://link.springer.com/chapter/10.1007/978-3-031-97576-9_6)
-
 > **⚠️ Disclaimer:** Some links point to private repositories accessible only to authorized team members.
 
 **PROJECT INDEX:**

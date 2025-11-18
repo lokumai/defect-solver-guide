@@ -135,12 +135,12 @@ graph TD
 
 #### Step-by-Step Execution
 
-**Option 1: Automated Script (Recommended)**
+**Option 1: Automated Script**
 ```bash
 ./project_summaries_pipeline.sh
 ```
 
-**Option 2: Manual Steps**
+**Option 2: Manual Steps (Recommended)**
 
 1. **Clone all configured codebases:**
 ```bash
@@ -151,7 +151,9 @@ python utilities/git_clone_all.py
 ```bash
 python utilities/transfer_attachments.py
 ```
-Place attachments in `input_codebases/<codebase_name>/attachments/`
+Move attachments from `input_codebases/<codebase_name>/` to `output_summaries/<codebase_name>/attachments/`
+
+[OPTIONAL]: In this step, you can also add TMForum documents manually using Drag&Drop to the `output_summaries/<codebase_name>/attachments/` folder. Please note that when adding extra documents to the attachment, the document MUST be in text format such as `.json` or `.md` or `.xml`. NEVER put images (`.png`) or pdf files (`.pdf`) in the attachments folder !!!
 
 3. **Generate project-level summaries:**
 ```bash
